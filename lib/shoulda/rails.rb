@@ -7,11 +7,17 @@ require 'shoulda/action_controller' if defined? ActionController::Base
 require 'shoulda/action_view'       if defined? ActionView::Base
 require 'shoulda/action_mailer'     if defined? ActionMailer::Base
 
-root = if defined?(Rails.root) && Rails.root
-         Rails.root
-       else
-         RAILS_ROOT
-       end
+# Load in the 3rd party macros from vendorized plugins and gems
+if Rails::VERSION::MAJOR == 2
+  Shoulda.autoload_macros RAILS_ROOT, File.join("vendor", "{plugins,gems}", "*")
+else
+  module Shoulda
+    class Railtie < Rails::Railtie
+      railtie_name :shoulda
 
-# load in the 3rd party macros from vendorized plugins and gems
-Shoulda.autoload_macros root, File.join("vendor", "{plugins,gems}", "*")
+      initializer "shoulda.autoload_macros" do |app|
+        Shoulda.autoload_macros Rails.root, File.join("vendor", "{plugins,gems}", "*")
+      end
+    end
+  end
+end

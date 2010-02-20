@@ -7,7 +7,7 @@ require 'shoulda/macros'
 require 'shoulda/helpers'
 require 'shoulda/autoload_macros'
 
-if (defined?(Rails.root) && Rails.root) || defined?(RAILS_ROOT)
+if defined?(Rails)
   require 'shoulda/rails'
 end
 

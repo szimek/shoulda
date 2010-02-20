@@ -2,9 +2,8 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  # Pick a unique cookie name to distinguish our session data from others'
-  session :session_key => '_rails_root_session_id'
-  
+  protect_from_forgery
+
   def ensure_logged_in
     unless session[:logged_in]
       respond_to do |accepts|

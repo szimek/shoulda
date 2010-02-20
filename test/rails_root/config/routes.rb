@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-
-  map.resources :posts
-  map.resources :users, :has_many => :posts
-
+  resources :posts
+  resources :users do
+    resources :posts
+  end
 end

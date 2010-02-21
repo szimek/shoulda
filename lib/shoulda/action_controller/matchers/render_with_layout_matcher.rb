@@ -54,7 +54,7 @@ module Shoulda # :nodoc:
         end
 
         def layout
-          layout = @controller.response.layout
+          layout = @controller.template.layout
           if layout.nil?
             nil
           else

@@ -63,7 +63,7 @@ module Shoulda # :nodoc:
         end
 
         def session
-          @controller.response.session.data
+          @controller.request.session.to_hash
         end
 
         def expectation

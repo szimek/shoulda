@@ -56,13 +56,15 @@ class EnsureInclusionOfMatcherTest < ActiveSupport::TestCase # :nodoc:
   context "an attribute with custom range validations" do
     setup do
       define_model :example, :attr => :integer do
-        def validate
+        def custom_range_validation
           if attr < 2
             errors.add(:attr, 'too low')
           elsif attr > 5
             errors.add(:attr, 'too high')
           end
         end
+
+        validate :custom_range_validation
       end
       @model = Example.new
     end

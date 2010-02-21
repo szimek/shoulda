@@ -1,6 +1,6 @@
 class CreateDogsFleas < ActiveRecord::Migration
   def self.up
-    create_table :dogs_fleas do |t|
+    create_table :dogs_fleas, :id => false do |t|
       t.integer :dog_id
       t.integer :flea_id
     end

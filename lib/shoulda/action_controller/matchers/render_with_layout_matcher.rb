@@ -54,11 +54,11 @@ module Shoulda # :nodoc:
         end
 
         def layout
-          layout = @controller.template.layout
+          layout = @controller.view_context.layout
           if layout.nil?
             nil
           else
-            layout.split('/').last
+            layout.split('/').last.split('.')[0..-3].join('.')
           end
         end
 

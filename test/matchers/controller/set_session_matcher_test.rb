@@ -7,6 +7,7 @@ class SetSessionMatcherTest < ActionController::TestCase # :nodoc:
       @controller = build_response do
         session[:var] = 'value'
         session[:false_var] = false
+        render :nothing => true
       end
     end
 

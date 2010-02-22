@@ -4,7 +4,7 @@ class RenderWithLayoutMatcherTest < ActionController::TestCase # :nodoc:
 
   context "a controller that renders with a layout" do
     setup do
-      @controller = build_response { render :layout => 'wide' }
+      @controller = build_response { render :nothing => true, :layout => 'wide' }
     end
 
     should "accept rendering with any layout" do
@@ -22,7 +22,7 @@ class RenderWithLayoutMatcherTest < ActionController::TestCase # :nodoc:
 
   context "a controller that renders without a layout" do
     setup do
-      @controller = build_response { render :layout => false }
+      @controller = build_response { render :nothing => true, :layout => false }
     end
 
     should "reject rendering with a layout" do

@@ -62,7 +62,7 @@ class ActiveSupport::TestCase
 
   def build_response(&block)
     klass = define_controller('Examples')
-    block ||= lambda { render :nothing => true }
+    block ||= lambda { render :template => 'users/index' }
     klass.class_eval { define_method(:example, &block) }
 
     define_routes do

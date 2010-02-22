@@ -4,7 +4,10 @@ class AssignToMatcherTest < ActionController::TestCase # :nodoc:
 
   context "a controller that assigns to an instance variable" do
     setup do
-      @controller = build_response { @var = 'value' }
+      @controller = build_response do
+        @var = 'value'
+        render :nothing => true
+      end
     end
 
     should "accept assigning to that variable" do

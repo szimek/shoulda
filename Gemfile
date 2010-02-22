@@ -20,7 +20,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
 # Bundle gems for certain environments:
-gem 'mocha', :group => :test
-# group :test do
-#   gem 'webrat'
-# end
+group :test do
+  gem 'test-unit', :require => 'test/unit'
+  gem 'mocha'
+end

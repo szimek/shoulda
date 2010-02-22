@@ -36,7 +36,7 @@ class RouteToMatcherTest < ActionController::TestCase # :nodoc:
 
     should "accept a symbol controller" do
       assert_accepts route(:get, '/examples/1').
-                       to(:controller => :examples, 
+                       to(:controller => :examples,
                           :action     => 'example',
                           :id         => '1'),
                      self
@@ -44,7 +44,7 @@ class RouteToMatcherTest < ActionController::TestCase # :nodoc:
 
     should "accept a symbol action" do
       assert_accepts route(:get, '/examples/1').
-                       to(:action => :example, :id => '1'), 
+                       to(:action => :example, :id => '1'),
                      @controller
     end
 

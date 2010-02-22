@@ -14,7 +14,7 @@ class UserTest < ActiveSupport::TestCase
   should_have_one :address, :dependent => :destroy
 
   should_have_db_indices :email, :name
-  should_have_index :age
+  should_have_db_index :age
   should_have_db_index [:email, :name], :unique => true
   should_have_db_index :age, :unique => false
 

@@ -9,6 +9,6 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 group :test do
   gem 'test-unit', :require => 'test/unit'
-  gem 'shoulda', :group => :test, :path => "."
+  gem 'shoulda', :path => "."
   gem 'mocha'
 end

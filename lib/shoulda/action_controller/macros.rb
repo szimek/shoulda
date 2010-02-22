@@ -55,21 +55,6 @@ module Shoulda # :nodoc:
         end
       end
 
-      # Macro that creates a test asserting that filter_parameter_logging
-      # is set for the specified keys
-      #
-      # Example:
-      #
-      #   should_filter_params :password, :ssn
-      def should_filter_params(*keys)
-        keys.each do |key|
-          matcher = filter_param(key)
-          should matcher.description do
-            assert_accepts matcher, @controller
-          end
-        end
-      end
-
       # Macro that creates a test asserting that the controller assigned to
       # each of the named instance variable(s).
       #

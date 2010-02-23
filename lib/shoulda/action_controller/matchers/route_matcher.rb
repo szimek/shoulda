@@ -60,7 +60,13 @@ module Shoulda # :nodoc:
         private
 
         def guess_controller!
-          @params[:controller] ||= @controller.controller_path
+          @params[:controller] ||= controller_path
+        end
+
+        # Workaround for Ruby 1.8.7 bug (?)
+        # TODO: remove it when https://rails.lighthouseapp.com/projects/8994/tickets/4036 is committed
+        def controller_path
+          @controller.class.name.present? && @controller.class.name.sub(/Controller$/, '').underscore
         end
 
         def stringify_params!
@@ -71,7 +77,7 @@ module Shoulda # :nodoc:
 
         def route_recognized?
           begin
-            @context.send(:assert_routing, 
+            @context.send(:assert_routing,
                           { :method => @method, :path => @path },
                           @params)
 
